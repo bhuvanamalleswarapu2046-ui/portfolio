@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>To-Do App</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f4f7fb;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.container{
+width:95%;
+max-width:650px;
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+h1{
+text-align:center;
+color:#2563eb;
+margin-bottom:25px;
+}
+
+.input-box{
+display:flex;
+gap:12px;
+margin-bottom:25px;
+}
+
+input{
+flex:1;
+padding:14px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+padding:14px 18px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.filters{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-bottom:25px;
+}
+
+.task{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#f8fafc;
+margin:12px 0;
+border-radius:12px;
+}
+
+.task span{
+cursor:pointer;
+font-size:16px;
+}
+
+.completed{
+text-decoration:line-through;
+opacity:.6;
+}
+
+.actions{
+display:flex;
+gap:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>To-Do List</h1>
+
+<div class="input-box">
+<input id="taskInput" placeholder="Add your task">
+<button onclick="addTask()">Add</button>
+</div>
+
+<div class="filters">
+<button onclick="setFilter('all')">All</button>
+<button onclick="setFilter('active')">Active</button>
+<button onclick="setFilter('completed')">Completed</button>
+</div>
+
+<div id="taskList"></div>
+
+</div>
+
+<script>
+let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
+let filter="all";
+
+function save(){
+localStorage.setItem("tasks",JSON.stringify(tasks));
+render();
+}
+
+function addTask(){
+const input=document.getElementById("taskInput");
+if(input.value.trim()){
+tasks.push({text:input.value,done:false});
+input.value="";
+save();
+}
+}
+
+function toggleTask(i){
+tasks[i].done=!tasks[i].done;
+save();
+}
+
+function deleteTask(i){
+tasks.splice(i,1);
+save();
+}
+
+function editTask(i){
+const updated=prompt("Edit Task",tasks[i].text);
+if(updated){
+tasks[i].text=updated;
+save();
+}
+}
+
+function setFilter(f){
+filter=f;
+render();
+}
+
+function render(){
+const list=document.getElementById("taskList");
+list.innerHTML="";
+
+tasks.filter(t=>{
+if(filter==="active") return !t.done;
+if(filter==="completed") return t.done;
+return true;
+}).forEach((task,i)=>{
+
+list.innerHTML+=`
+<div class="task">
+<span class="${task.done?'completed':''}" onclick="toggleTask(${i})">${task.text}</span>
+
+<div class="actions">
+<button onclick="editTask(${i})">Edit</button>
+<button onclick="deleteTask(${i})">Delete</button>
+</div>
+
+</div>
+`;
+});
+}
+
+render();
+</script>
+
+</body>
+</html>
