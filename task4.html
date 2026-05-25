@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Weather Dashboard</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f4f7fb;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.container{
+width:95%;
+max-width:600px;
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:center;
+}
+
+h1{
+color:#2563eb;
+margin-bottom:25px;
+}
+
+.search{
+display:flex;
+gap:10px;
+margin-bottom:25px;
+}
+
+input{
+flex:1;
+padding:14px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+button{
+padding:14px 18px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.weather{
+margin-top:20px;
+font-size:18px;
+line-height:2;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Weather Dashboard</h1>
+
+<div class="search">
+<input id="city" placeholder="Enter city name">
+<button onclick="getWeather()">Search</button>
+</div>
+
+<div id="weather" class="weather"></div>
+
+</div>
+
+<script>
+
+async function getWeather(){
+
+const city=document.getElementById("city").value;
+const weatherDiv=document.getElementById("weather");
+
+if(!city){
+weatherDiv.innerHTML="Please enter a city";
+return;
+}
+
+try{
+
+const res=await fetch(
+`https://wttr.in/${city}?format=j1`
+);
+
+if(!res.ok){
+throw new Error("City not found");
+}
+
+const data=await res.json();
+
+const current=data.current_condition[0];
+
+weatherDiv.innerHTML=`
+<h2>${city}</h2>
+<p>🌡 Temperature: ${current.temp_C}°C</p>
+<p>💧 Humidity: ${current.humidity}%</p>
+<p>💨 Wind Speed: ${current.windspeedKmph} km/h</p>
+<p>☁ Condition: ${current.weatherDesc[0].value}</p>
+`;
+
+}catch(error){
+
+weatherDiv.innerHTML=
+`Error: Unable to fetch weather data`;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
