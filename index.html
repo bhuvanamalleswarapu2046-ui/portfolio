@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhuvana Portfolio Dashboard</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#2563eb);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+.container{
+text-align:center;
+background:rgba(255,255,255,0.08);
+padding:50px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+width:90%;
+max-width:600px;
+}
+
+img{
+width:140px;
+height:140px;
+border-radius:50%;
+border:4px solid white;
+object-fit:cover;
+margin-bottom:20px;
+}
+
+h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+p{
+opacity:.9;
+margin-bottom:25px;
+font-size:18px;
+}
+
+.tasks{
+display:flex;
+flex-direction:column;
+gap:18px;
+margin-top:20px;
+}
+
+a{
+display:block;
+padding:18px;
+background:white;
+color:#2563eb;
+text-decoration:none;
+font-weight:bold;
+border-radius:12px;
+transition:.3s;
+font-size:18px;
+}
+
+a:hover{
+transform:translateY(-5px);
+box-shadow:0 8px 20px rgba(255,255,255,.25);
+}
+
+.footer{
+margin-top:25px;
+font-size:14px;
+opacity:.8;
+}
+
+@media(min-width:768px){
+.tasks{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<img src="your-photo.jpeg" alt="Profile">
+
+<h1>Malleswarapu Bhuvana Sri Vijaya</h1>
+
+<p>Aspiring Software Developer | Portfolio Dashboard</p>
+
+<div class="tasks">
+
+<a href="task1.html">Task 1 - Portfolio Website</a>
+
+<a href="task2.html">Task 2 - Advanced CSS3</a>
+
+<a href="task3.html">Task 3 - To-Do App</a>
+
+<a href="task4.html">Task 4 - Weather Dashboard</a>
+
+<a href="task5.html">Task 5 - E-Commerce Capstone project</a>
+
+</div>
+
+<div class="footer">
+© 2026 Bhuvana Portfolio
+</div>
+
+</div>
+
+</body>
+</html>
