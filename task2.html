@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhuvana Portfolio - Task 2</title>
+
+<style>
+:root{
+--bg:#f4f7fb;
+--text:#222;
+--card:#fff;
+--primary:#2563eb;
+--nav:#111;
+}
+
+[data-theme='dark']{
+--bg:#0f172a;
+--text:#fff;
+--card:#1e293b;
+--primary:#60a5fa;
+--nav:#020617;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+
+header{
+text-align:center;
+padding:50px;
+background:linear-gradient(135deg,var(--nav),var(--primary));
+color:white;
+}
+
+header img{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+}
+
+nav{
+display:flex;
+justify-content:center;
+gap:20px;
+background:var(--nav);
+padding:15px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+padding:25px;
+}
+
+section{
+background:var(--card);
+padding:25px;
+border-radius:16px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+section:hover{
+transform:translateY(-5px);
+}
+
+.skills,.projects{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.skills span,.project{
+flex:1 1 250px;
+background:#dbeafe;
+padding:15px;
+border-radius:12px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input,textarea,button{
+padding:15px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+background:var(--primary);
+color:white;
+border:none;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+opacity:.85;
+}
+
+.toggle{
+position:fixed;
+top:15px;
+right:15px;
+padding:10px;
+background:var(--primary);
+color:white;
+border:none;
+cursor:pointer;
+border-radius:8px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:var(--nav);
+color:white;
+}
+
+@media(min-width:768px){
+.container{
+grid-template-columns:repeat(2,1fr);
+}
+header img{
+width:180px;
+height:180px;
+}
+}
+
+@media(min-width:1024px){
+.container{
+grid-template-columns:repeat(3,1fr);
+}
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="document.body.dataset.theme=document.body.dataset.theme==='dark'?'light':'dark'">🌙</button>
+
+<header>
+<img src="your-photo.jpeg" alt="Profile Photo">
+
+<h1>Malleswarapu Bhuvana Sri Vijaya</h1>
+
+<p>Aspiring Software Developer | B.Tech CSE (AI)</p>
+
+<p>
+<a href="https://www.linkedin.com/in/bhuvana-malleswarapu" style="color:white;">LinkedIn</a> |
+<a href="https://github.com/bhuvanamalleswarapu2046-ui" style="color:white;">GitHub</a>
+</p>
+</header>
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+<section id="about">
+<h2>About Me</h2>
+<p>
+Highly motivated Computer Science student specializing in Artificial Intelligence, passionate about building scalable software solutions and solving real-world problems through modern technologies.
+</p>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="skills">
+<span>Java</span>
+<span>Python</span>
+<span>HTML5</span>
+<span>DBMS</span>
+<span>Machine Learning</span>
+<span>Full Stack Development</span>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="projects">
+<div class="project">Smart Calendar</div>
+<div class="project">Tourism Recommendation</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+<form>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea placeholder="Your Message"></textarea>
+<button>Send Message</button>
+</form>
+</section>
+
+</div>
+
+<footer>
+© 2026 Bhuvana Portfolio
+</footer>
+
+</body>
+</html>
